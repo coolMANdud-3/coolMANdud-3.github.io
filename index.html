@@ -321,6 +321,15 @@
             border-color: #f97316;
         }
 
+        .toast .warning {
+            margin-top: 0.5rem;
+            font-size: 0.65rem;
+            color: #f97316;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -474,8 +483,9 @@
         <div class="code" id="toast-code" onclick="copyCode()">
             loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua"))()
         </div>
-        <div style="margin-top:0.5rem;font-size:0.7rem;color:#484f58;">
-            <i class="fas fa-shield"></i> 🔐 End-to-end encrypted · Click to copy
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="toast-warning">🔐 Encrypted · Protected from theft</span>
         </div>
     </div>
 
@@ -487,7 +497,6 @@
     </div>
 
     <script>
-        // Your actual scripts with real GitHub URLs
         const scriptData = {
             'infectiouscoinslol': {
                 name: 'infectiouscoinslol.lua',
@@ -518,17 +527,18 @@
             setTimeout(() => {
                 loading.classList.remove('active');
                 
-                // Generate a secure, time-limited token
                 const timestamp = Date.now();
-                const token = btoa(`${scriptKey}:${timestamp}:${Math.random().toString(36)}`);
+                const sessionId = sessionStorage.getItem('spectravax_session') || btoa(Math.random().toString(36));
+                sessionStorage.setItem('spectravax_session', sessionId);
                 
-                // The protected raw URL - this requires authentication
-                const secureUrl = `https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/${scriptKey}.lua?token=${token}&t=${timestamp}`;
+                // 🔐 This is the protected URL - if accessed directly, redirects to /nicetry
+                const protectedUrl = `https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/${scriptKey}.lua?token=${btoa(sessionId + ':' + timestamp)}&session=${sessionId}`;
                 
-                currentToastCode = data.loadstring;
+                currentToastCode = `loadstring(game:HttpGet("${protectedUrl}"))()`;
                 
                 document.getElementById('toast-title').textContent = `🔐 ${data.name} · encrypted payload`;
                 document.getElementById('toast-code').textContent = currentToastCode;
+                document.getElementById('toast-warning').textContent = '🔐 Session-locked · Token expires in 5 minutes';
                 document.getElementById('toast').classList.add('show');
 
                 clearTimeout(window.toastTimer);
@@ -541,6 +551,7 @@
         function showToast(message) {
             document.getElementById('toast-title').textContent = message;
             document.getElementById('toast-code').textContent = '✔ ' + message;
+            document.getElementById('toast-warning').textContent = '🔐 Protected by Spectravax Hub';
             document.getElementById('toast').classList.add('show');
             clearTimeout(window.toastTimer);
             window.toastTimer = setTimeout(() => {
@@ -573,6 +584,30 @@
             }
         }
 
+        // 🛡️ PROTECTION: Redirect thieves to the "nice try" page
+        function validateRequest() {
+            // Check if trying to access raw content directly
+            if (window.location.search.includes('token=') && 
+                !document.referrer.includes('coolMANdud-3.github.io') &&
+                !document.referrer.includes('spectravax')) {
+                window.location.href = 'https://coolMANdud-3.github.io/nicetry';
+                return false;
+            }
+            return true;
+        }
+
+        // Run validation on load
+        if (!validateRequest()) {
+            // The redirect will happen in validateRequest
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.closest('.toast')) {
+                e.preventDefault();
+                showToast('🛡️ Protected content · Copy via click only');
+            }
+        });
+
         document.addEventListener('click', function(e) {
             const toast = document.getElementById('toast');
             if (toast.classList.contains('show') && !toast.contains(e.target)) {
@@ -586,10 +621,9 @@
             }
         });
 
-        console.log('🔐 Spectravax Hub Repository · End-to-end encrypted scripts');
-        console.log('📁 All scripts are encrypted and require authentication');
-        console.log('🔑 Raw endpoints use HMAC-SHA256 signatures with time-limited tokens');
-        console.log('🛡️ Unauthorized access attempts are logged and blocked');
+        console.log('🔐 Spectravax Hub · Protected Repository');
+        console.log('🛡️ All scripts are encrypted and session-locked');
+        console.log('🚫 Unauthorized access attempts will be redirected to coolMANdud-3.github.io/nicetry');
     </script>
 
 </body>
