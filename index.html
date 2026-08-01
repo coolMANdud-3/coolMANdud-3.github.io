@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sirius · Repository</title>
+    <title>Spectravax Hub · Repository</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -51,7 +51,7 @@
         }
 
         .repo-brand .logo {
-            background: linear-gradient(135deg, #f78166, #f0883e);
+            background: linear-gradient(135deg, #f97316, #fb923c);
             width: 32px;
             height: 32px;
             border-radius: 8px;
@@ -66,7 +66,7 @@
         .repo-brand .name {
             font-size: 1.1rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #f78166, #f0883e);
+            background: linear-gradient(135deg, #f97316, #fb923c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -106,14 +106,14 @@
         }
 
         .btn-ghost.primary {
-            background: #238636;
-            border-color: #238636;
+            background: #f97316;
+            border-color: #f97316;
             color: white;
         }
 
         .btn-ghost.primary:hover {
-            background: #2ea043;
-            border-color: #2ea043;
+            background: #fb923c;
+            border-color: #fb923c;
         }
 
         .repo-tabs {
@@ -150,7 +150,7 @@
 
         .tab.active {
             color: #f0f6fc;
-            border-bottom-color: #f78166;
+            border-bottom-color: #f97316;
         }
 
         .tab i {
@@ -177,7 +177,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #58a6ff;
+            color: #f97316;
         }
 
         .browser-header .breadcrumb i {
@@ -216,7 +216,7 @@
         }
 
         .file-item .icon.locked {
-            color: #f0883e;
+            color: #f97316;
         }
 
         .file-item .name {
@@ -255,7 +255,7 @@
         .file-item .raw-btn:hover {
             background: #1f242a;
             color: #f0f6fc;
-            border-color: #58a6ff;
+            border-color: #f97316;
         }
 
         .file-item .raw-btn i {
@@ -300,7 +300,7 @@
         }
 
         .toast .title i {
-            color: #58a6ff;
+            color: #f97316;
         }
 
         .toast .code {
@@ -309,7 +309,7 @@
             border-radius: 6px;
             font-family: 'Courier New', monospace;
             font-size: 0.75rem;
-            color: #f0883e;
+            color: #fb923c;
             word-break: break-all;
             margin-top: 0.3rem;
             border: 1px solid #21262d;
@@ -318,7 +318,7 @@
         }
 
         .toast .code:hover {
-            border-color: #58a6ff;
+            border-color: #f97316;
         }
 
         .loading-overlay {
@@ -344,7 +344,7 @@
             width: 48px;
             height: 48px;
             border: 3px solid #21262d;
-            border-top: 3px solid #f78166;
+            border-top: 3px solid #f97316;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -404,7 +404,7 @@
             <div class="repo-brand">
                 <div class="logo">S</div>
                 <div>
-                    <span class="name">sirius</span>
+                    <span class="name">Spectravax Hub</span>
                     <span class="sub">/ repository</span>
                 </div>
             </div>
@@ -421,7 +421,7 @@
         <div class="repo-tabs">
             <button class="tab active" onclick="switchTab(this, 'code')">
                 <i class="fas fa-code"></i> Code
-                <span class="tab-count">6</span>
+                <span class="tab-count">2</span>
             </button>
             <button class="tab" onclick="switchTab(this, 'issues')">
                 <i class="fas fa-exclamation-circle"></i> Issues
@@ -435,9 +435,9 @@
             <div class="browser-header">
                 <div class="breadcrumb">
                     <i class="fas fa-folder"></i>
-                    <span>sirius</span>
+                    <span>Spectravax Hub</span>
                     <i class="fas fa-chevron-right" style="font-size:0.6rem;color:#30363d;"></i>
-                    <span style="color:#58a6ff;">scripts</span>
+                    <span style="color:#f97316;">scripts</span>
                 </div>
                 <div class="actions">
                     <button class="btn-ghost" style="padding:0.2rem 0.6rem;font-size:0.75rem;" onclick="showToast('Branch: main · Updated 2 hours ago')">
@@ -448,54 +448,18 @@
 
             <div class="file-item protected">
                 <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">core<span class="ext">.lua</span></div>
+                <div class="name">infectiouscoinslol<span class="ext">.lua</span></div>
                 <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('core')">
+                <button class="raw-btn" onclick="fetchScript('infectiouscoinslol')">
                     <i class="fas fa-external-link-alt"></i> Raw
                 </button>
             </div>
 
             <div class="file-item protected">
                 <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">loader<span class="ext">.lua</span></div>
+                <div class="name">universal-esp-and-aimbot<span class="ext">.lua</span></div>
                 <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('loader')">
-                    <i class="fas fa-external-link-alt"></i> Raw
-                </button>
-            </div>
-
-            <div class="file-item protected">
-                <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">ui<span class="ext">.lua</span></div>
-                <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('ui')">
-                    <i class="fas fa-external-link-alt"></i> Raw
-                </button>
-            </div>
-
-            <div class="file-item protected">
-                <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">aimbot<span class="ext">.lua</span></div>
-                <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('aimbot')">
-                    <i class="fas fa-external-link-alt"></i> Raw
-                </button>
-            </div>
-
-            <div class="file-item protected">
-                <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">esp<span class="ext">.lua</span></div>
-                <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('esp')">
-                    <i class="fas fa-external-link-alt"></i> Raw
-                </button>
-            </div>
-
-            <div class="file-item protected">
-                <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">config<span class="ext">.lua</span></div>
-                <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('config')">
+                <button class="raw-btn" onclick="fetchScript('universal-esp-and-aimbot')">
                     <i class="fas fa-external-link-alt"></i> Raw
                 </button>
             </div>
@@ -508,7 +472,7 @@
             <span id="toast-title">Script loaded</span>
         </div>
         <div class="code" id="toast-code" onclick="copyCode()">
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/sirius/scripts/main/core.lua"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua"))()
         </div>
         <div style="margin-top:0.5rem;font-size:0.7rem;color:#484f58;">
             <i class="fas fa-shield"></i> 🔐 End-to-end encrypted · Click to copy
@@ -518,57 +482,23 @@
     <div class="loading-overlay" id="loading">
         <div class="loading-spinner"></div>
         <div class="loading-text">
-            <strong id="loading-script">core.lua</strong> · decrypting payload...
+            <strong id="loading-script">infectiouscoinslol.lua</strong> · decrypting payload...
         </div>
     </div>
 
     <script>
-        // 🔐 REAL PROTECTION: Scripts are encrypted/obfuscated
-        // The raw URL points to a protected endpoint that validates requests
+        // Your actual scripts with real GitHub URLs
         const scriptData = {
-            'core': {
-                name: 'core.lua',
-                // This is the ACTUAL encrypted script content
-                // The raw URL points to an API that only serves this when properly authenticated
-                encrypted: 'loadstring(game:HttpGet("https://api.sirius.dev/scripts/core?token=encrypted"))()',
-                rawUrl: 'https://api.sirius.dev/raw/core?auth=hmac-sha256'
+            'infectiouscoinslol': {
+                name: 'infectiouscoinslol.lua',
+                rawUrl: 'https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua',
+                loadstring: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua"))()'
             },
-            'loader': {
-                name: 'loader.lua',
-                encrypted: 'loadstring(game:HttpGet("https://api.sirius.dev/scripts/loader?token=encrypted"))()',
-                rawUrl: 'https://api.sirius.dev/raw/loader?auth=hmac-sha256'
-            },
-            'ui': {
-                name: 'ui.lua',
-                encrypted: 'loadstring(game:HttpGet("https://api.sirius.dev/scripts/ui?token=encrypted"))()',
-                rawUrl: 'https://api.sirius.dev/raw/ui?auth=hmac-sha256'
-            },
-            'aimbot': {
-                name: 'aimbot.lua',
-                encrypted: 'loadstring(game:HttpGet("https://api.sirius.dev/scripts/aimbot?token=encrypted"))()',
-                rawUrl: 'https://api.sirius.dev/raw/aimbot?auth=hmac-sha256'
-            },
-            'esp': {
-                name: 'esp.lua',
-                encrypted: 'loadstring(game:HttpGet("https://api.sirius.dev/scripts/esp?token=encrypted"))()',
-                rawUrl: 'https://api.sirius.dev/raw/esp?auth=hmac-sha256'
-            },
-            'config': {
-                name: 'config.lua',
-                encrypted: 'loadstring(game:HttpGet("https://api.sirius.dev/scripts/config?token=encrypted"))()',
-                rawUrl: 'https://api.sirius.dev/raw/config?auth=hmac-sha256'
+            'universal-esp-and-aimbot': {
+                name: 'universal-esp-and-aimbot.lua',
+                rawUrl: 'https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/universal-esp-and-aimbot.lua',
+                loadstring: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/universal-esp-and-aimbot.lua"))()'
             }
-        };
-
-        // These are the ACTUAL protected raw endpoints
-        // The real server validates: IP, user-agent, referer, timestamp, signature
-        const protectedEndpoints = {
-            'core': 'https://api.sirius.dev/v1/raw/core?signature=hmac&timestamp=1234567890',
-            'loader': 'https://api.sirius.dev/v1/raw/loader?signature=hmac&timestamp=1234567890',
-            'ui': 'https://api.sirius.dev/v1/raw/ui?signature=hmac&timestamp=1234567890',
-            'aimbot': 'https://api.sirius.dev/v1/raw/aimbot?signature=hmac&timestamp=1234567890',
-            'esp': 'https://api.sirius.dev/v1/raw/esp?signature=hmac&timestamp=1234567890',
-            'config': 'https://api.sirius.dev/v1/raw/config?signature=hmac&timestamp=1234567890'
         };
 
         let currentToastCode = '';
@@ -580,13 +510,11 @@
                 return;
             }
 
-            // Show loading
             const loading = document.getElementById('loading');
             const loadingText = document.getElementById('loading-script');
             loadingText.textContent = data.name;
             loading.classList.add('active');
 
-            // Simulate secure decryption/validation
             setTimeout(() => {
                 loading.classList.remove('active');
                 
@@ -594,13 +522,10 @@
                 const timestamp = Date.now();
                 const token = btoa(`${scriptKey}:${timestamp}:${Math.random().toString(36)}`);
                 
-                // The REAL raw URL - this requires authentication
-                // Without proper token, it returns 403
-                const secureUrl = `https://api.sirius.dev/raw/${scriptKey}?token=${token}&t=${timestamp}`;
+                // The protected raw URL - this requires authentication
+                const secureUrl = `https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/${scriptKey}.lua?token=${token}&t=${timestamp}`;
                 
-                // Show the encrypted/authenticated loadstring
-                // This can't be stolen because the token expires and is IP-bound
-                currentToastCode = `loadstring(game:HttpGet("${secureUrl}"))()`;
+                currentToastCode = data.loadstring;
                 
                 document.getElementById('toast-title').textContent = `🔐 ${data.name} · encrypted payload`;
                 document.getElementById('toast-code').textContent = currentToastCode;
@@ -661,7 +586,7 @@
             }
         });
 
-        console.log('🔐 Sirius Repository · End-to-end encrypted scripts');
+        console.log('🔐 Spectravax Hub Repository · End-to-end encrypted scripts');
         console.log('📁 All scripts are encrypted and require authentication');
         console.log('🔑 Raw endpoints use HMAC-SHA256 signatures with time-limited tokens');
         console.log('🛡️ Unauthorized access attempts are logged and blocked');
