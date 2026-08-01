@@ -1,630 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spectravax Hub · Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rscripts.net search · ScriptBlox style</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-        body {
-            background: #0d1117;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #c9d1d9;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-        }
+    body {
+      background: #f4f6fa;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
 
-        .repo-container {
-            max-width: 1100px;
-            width: 100%;
-            background: #0d1117;
-            border-radius: 16px;
-            border: 1px solid #21262d;
-            overflow: hidden;
-            box-shadow: 0 8px 48px rgba(0,0,0,0.8);
-        }
+    .app {
+      max-width: 1300px;
+      width: 100%;
+    }
 
-        .repo-header {
-            padding: 1.25rem 1.5rem;
-            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
-            border-bottom: 1px solid #21262d;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.75rem 1.5rem;
-        }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
 
-        .repo-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo span {
+      font-weight: 400;
+      color: #64748b;
+      font-size: 0.9rem;
+      -webkit-text-fill-color: #64748b;
+      background: none;
+    }
 
-        .repo-brand .logo {
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: #0d1117;
-        }
+    .badge {
+      background: #eef2ff;
+      color: #4f46e5;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge i {
+      font-size: 0.7rem;
+    }
 
-        .repo-brand .name {
-            font-size: 1.1rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f97316, #fb923c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .search-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
 
-        .repo-brand .sub {
-            font-size: 0.75rem;
-            color: #8b949e;
-            font-weight: 400;
-            -webkit-text-fill-color: #8b949e;
-            margin-left: 0.25rem;
-        }
+    .search-box {
+      flex: 1;
+      min-width: 240px;
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      border-radius: 60px;
+      padding: 0 1.2rem;
+      transition: 0.2s;
+      border: 2px solid transparent;
+    }
+    .search-box:focus-within {
+      background: white;
+      border-color: #818cf8;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+    .search-box i {
+      color: #94a3b8;
+      font-size: 1rem;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      width: 100%;
+      outline: none;
+      font-weight: 450;
+    }
+    .search-box input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
 
-        .repo-actions {
-            margin-left: auto;
-            display: flex;
-            gap: 0.5rem;
-        }
+    .search-actions {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid #30363d;
-            color: #c9d1d9;
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
+    .btn {
+      background: #f1f5f9;
+      border: none;
+      padding: 0.65rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: #4f46e5;
+      color: white;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+      transform: scale(0.97);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #e2e8f0;
+    }
+    .btn-outline:hover {
+      background: #f8fafc;
+    }
+    .btn i {
+      font-size: 0.9rem;
+    }
 
-        .btn-ghost:hover {
-            background: #1f242a;
-            border-color: #8b949e;
-        }
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .results-header h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .results-header h2 small {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #64748b;
+    }
 
-        .btn-ghost.primary {
-            background: #f97316;
-            border-color: #f97316;
-            color: white;
-        }
+    .script-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
 
-        .btn-ghost.primary:hover {
-            background: #fb923c;
-            border-color: #fb923c;
-        }
+    .script-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      transition: 0.2s;
+      border: 1px solid #f0f2f6;
+      display: flex;
+      flex-direction: column;
+    }
+    .script-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+      border-color: #e2e8f0;
+    }
 
-        .repo-tabs {
-            display: flex;
-            gap: 0.25rem;
-            padding: 0 1.5rem;
-            background: #0d1117;
-            border-bottom: 1px solid #21262d;
-            overflow-x: auto;
-        }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .card-title i {
+      color: #818cf8;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+    .card-game {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-game i {
+      color: #94a3b8;
+      font-size: 0.7rem;
+    }
+    .card-game a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+    .card-game a:hover {
+      text-decoration: underline;
+    }
 
-        .tab {
-            padding: 0.7rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #8b949e;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.15s;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            white-space: nowrap;
-            font-family: 'Inter', sans-serif;
-            background: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-        }
+    .card-desc {
+      color: #334155;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
-        .tab:hover {
-            color: #f0f6fc;
-        }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #64748b;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.9rem;
+      margin-top: 0.2rem;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .card-meta .stats {
+      display: flex;
+      gap: 12px;
+    }
+    .card-meta .stats span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .card-meta .stats i {
+      font-size: 0.7rem;
+    }
 
-        .tab.active {
-            color: #f0f6fc;
-            border-bottom-color: #f97316;
-        }
+    .risk-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .risk-safe {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .risk-low {
+      background: #fef9c3;
+      color: #854d0e;
+    }
+    .risk-medium {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .risk-unknown {
+      background: #e9edf2;
+      color: #64748b;
+    }
 
-        .tab i {
-            font-size: 0.85rem;
-        }
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #64748b;
+      grid-column: 1/-1;
+    }
+    .empty-state i {
+      font-size: 3rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+    }
+    .empty-state h3 {
+      font-weight: 500;
+      color: #1e293b;
+    }
 
-        .repo-content {
-            padding: 1.5rem;
-        }
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #94a3b8;
+      border-top: 1px solid #e9edf2;
+      padding-top: 2rem;
+    }
+    .footer-note a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-        .browser-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0 0.75rem 0;
-            border-bottom: 1px solid #21262d;
-            font-size: 0.85rem;
-            color: #8b949e;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
+    .shimmer {
+      background: linear-gradient(90deg, #f1f5f9 25%, #e9edf2 50%, #f1f5f9 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 12px;
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    .loading-card {
+      height: 200px;
+      border-radius: 1.5rem;
+      background: white;
+      padding: 1.5rem;
+      border: 1px solid #f0f2f6;
+    }
+    .loading-card .line {
+      height: 12px;
+      margin-bottom: 10px;
+      border-radius: 40px;
+      background: #f1f5f9;
+    }
 
-        .browser-header .breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #f97316;
-        }
-
-        .browser-header .breadcrumb i {
-            color: #8b949e;
-        }
-
-        .browser-header .breadcrumb span {
-            color: #c9d1d9;
-        }
-
-        .file-item {
-            display: flex;
-            align-items: center;
-            padding: 0.6rem 0.75rem;
-            border-radius: 6px;
-            border-bottom: 1px solid #161b22;
-            transition: background 0.15s;
-            gap: 0.75rem;
-            cursor: default;
-        }
-
-        .file-item:hover {
-            background: #161b22;
-        }
-
-        .file-item .icon {
-            color: #58a6ff;
-            font-size: 1rem;
-            width: 1.2rem;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .file-item .icon.folder {
-            color: #d29922;
-        }
-
-        .file-item .icon.locked {
-            color: #f97316;
-        }
-
-        .file-item .name {
-            flex: 1;
-            font-size: 0.9rem;
-            color: #c9d1d9;
-            font-weight: 500;
-        }
-
-        .file-item .name .ext {
-            color: #8b949e;
-            font-weight: 400;
-        }
-
-        .file-item .size {
-            font-size: 0.75rem;
-            color: #8b949e;
-            margin-right: 0.5rem;
-        }
-
-        .file-item .raw-btn {
-            background: transparent;
-            border: 1px solid #30363d;
-            color: #8b949e;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .file-item .raw-btn:hover {
-            background: #1f242a;
-            color: #f0f6fc;
-            border-color: #f97316;
-        }
-
-        .file-item .raw-btn i {
-            font-size: 0.7rem;
-        }
-
-        .file-item.protected .name {
-            color: #8b949e;
-        }
-
-        .file-item.protected .icon {
-            color: #484f58;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #161b22;
-            border: 1px solid #30363d;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-            max-width: 500px;
-            transform: translateY(120%);
-            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 1000;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-        }
-
-        .toast .title {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: #f0f6fc;
-            margin-bottom: 0.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .toast .title i {
-            color: #f97316;
-        }
-
-        .toast .code {
-            background: #0d1117;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #fb923c;
-            word-break: break-all;
-            margin-top: 0.3rem;
-            border: 1px solid #21262d;
-            cursor: pointer;
-            user-select: all;
-        }
-
-        .toast .code:hover {
-            border-color: #f97316;
-        }
-
-        .toast .warning {
-            margin-top: 0.5rem;
-            font-size: 0.65rem;
-            color: #f97316;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(13, 17, 23, 0.92);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .loading-overlay.active {
-            display: flex;
-        }
-
-        .loading-spinner {
-            width: 48px;
-            height: 48px;
-            border: 3px solid #21262d;
-            border-top: 3px solid #f97316;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            color: #8b949e;
-            font-size: 0.9rem;
-        }
-
-        .loading-text strong {
-            color: #f0f6fc;
-        }
-
-        @media (max-width: 768px) {
-            .repo-header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .repo-actions {
-                margin-left: 0;
-                flex-wrap: wrap;
-            }
-            .repo-tabs {
-                padding: 0 0.75rem;
-            }
-            .tab {
-                padding: 0.5rem 0.75rem;
-                font-size: 0.75rem;
-            }
-            .repo-content {
-                padding: 0.75rem;
-            }
-            .file-item {
-                flex-wrap: wrap;
-                gap: 0.3rem;
-            }
-            .file-item .size {
-                display: none;
-            }
-            .toast {
-                left: 1rem;
-                right: 1rem;
-                bottom: 1rem;
-                max-width: none;
-            }
-        }
-    </style>
+    @media (max-width: 640px) {
+      .header { flex-direction: column; align-items: stretch; text-align: center; }
+      .search-card { flex-direction: column; align-items: stretch; }
+    }
+  </style>
 </head>
 <body>
+<div class="app" id="app">
 
-    <div class="repo-container">
-        <div class="repo-header">
-            <div class="repo-brand">
-                <div class="logo">S</div>
-                <div>
-                    <span class="name">Spectravax Hub</span>
-                    <span class="sub">/ repository</span>
-                </div>
-            </div>
-            <div class="repo-actions">
-                <button class="btn-ghost" onclick="showToast('🔒 Repository is private')">
-                    <i class="fas fa-lock"></i> Private
-                </button>
-                <button class="btn-ghost primary" onclick="showToast('✅ Cloned successfully')">
-                    <i class="fas fa-regular fa-copy"></i> Clone
-                </button>
-            </div>
-        </div>
-
-        <div class="repo-tabs">
-            <button class="tab active" onclick="switchTab(this, 'code')">
-                <i class="fas fa-code"></i> Code
-                <span class="tab-count">2</span>
-            </button>
-            <button class="tab" onclick="switchTab(this, 'issues')">
-                <i class="fas fa-exclamation-circle"></i> Issues
-            </button>
-            <button class="tab" onclick="switchTab(this, 'security')">
-                <i class="fas fa-shield"></i> Security
-            </button>
-        </div>
-
-        <div class="repo-content" id="content-area">
-            <div class="browser-header">
-                <div class="breadcrumb">
-                    <i class="fas fa-folder"></i>
-                    <span>Spectravax Hub</span>
-                    <i class="fas fa-chevron-right" style="font-size:0.6rem;color:#30363d;"></i>
-                    <span style="color:#f97316;">scripts</span>
-                </div>
-                <div class="actions">
-                    <button class="btn-ghost" style="padding:0.2rem 0.6rem;font-size:0.75rem;" onclick="showToast('Branch: main · Updated 2 hours ago')">
-                        <i class="fas fa-code-branch"></i> main
-                    </button>
-                </div>
-            </div>
-
-            <div class="file-item protected">
-                <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">infectiouscoinslol<span class="ext">.lua</span></div>
-                <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('infectiouscoinslol')">
-                    <i class="fas fa-external-link-alt"></i> Raw
-                </button>
-            </div>
-
-            <div class="file-item protected">
-                <div class="icon locked"><i class="fas fa-lock"></i></div>
-                <div class="name">universal-esp-and-aimbot<span class="ext">.lua</span></div>
-                <div class="size">🔒 Encrypted</div>
-                <button class="raw-btn" onclick="fetchScript('universal-esp-and-aimbot')">
-                    <i class="fas fa-external-link-alt"></i> Raw
-                </button>
-            </div>
-        </div>
+  <header class="header">
+    <div class="logo">
+      <h1>📜 rscripts <span>· search</span></h1>
     </div>
-
-    <div class="toast" id="toast">
-        <div class="title">
-            <i class="fas fa-terminal"></i>
-            <span id="toast-title">Script loaded</span>
-        </div>
-        <div class="code" id="toast-code" onclick="copyCode()">
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua"))()
-        </div>
-        <div class="warning">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span id="toast-warning">🔐 Encrypted · Protected from theft</span>
-        </div>
+    <div class="badge">
+      <i class="fas fa-shield-alt"></i> Rscripts API · live
     </div>
+  </header>
 
-    <div class="loading-overlay" id="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">
-            <strong id="loading-script">infectiouscoinslol.lua</strong> · decrypting payload...
-        </div>
+  <div class="search-card">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search scripts, games, or creators…" value="autofarm" />
     </div>
+    <div class="search-actions">
+      <button class="btn btn-primary" id="searchBtn"><i class="fas fa-arrow-right"></i> Search</button>
+      <button class="btn btn-outline" id="resetBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+    </div>
+  </div>
 
-    <script>
-        const scriptData = {
-            'infectiouscoinslol': {
-                name: 'infectiouscoinslol.lua',
-                rawUrl: 'https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua',
-                loadstring: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/infectiouscoinslol.lua"))()'
-            },
-            'universal-esp-and-aimbot': {
-                name: 'universal-esp-and-aimbot.lua',
-                rawUrl: 'https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/universal-esp-and-aimbot.lua',
-                loadstring: 'loadstring(game:HttpGet("https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/universal-esp-and-aimbot.lua"))()'
-            }
+  <div class="results-header">
+    <h2 id="resultTitle">🔍 Scripts <small id="resultCount"></small></h2>
+    <span style="font-size:0.8rem; color:#94a3b8;">
+      <i class="fas fa-code"></i> Powered by Rscripts.net
+    </span>
+  </div>
+
+  <div id="scriptGrid" class="script-grid">
+    <!-- cards rendered by JS -->
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-database"></i> Data from 
+    <a href="https://api.rscripts.net/v1/search" target="_blank">Rscripts API</a> · 
+    <a href="https://rscripts.net/docs/api" target="_blank">API docs</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // ---------- YOUR API KEY ----------
+    const API_KEY = 'rsc_live_JelXNkd8gAbBqAKoM5p3tYSevOtkqdxC';
+
+    const API_URL = 'https://api.rscripts.net/v1/search';
+
+    // DOM refs
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const scriptGrid = document.getElementById('scriptGrid');
+    const resultCount = document.getElementById('resultCount');
+
+    // ---------- helpers ----------
+    function buildSearchUrl(query, limit = 12) {
+      const url = new URL(API_URL);
+      url.searchParams.set('q', query.trim());
+      url.searchParams.set('index', 'scripts');
+      url.searchParams.set('limit', String(limit));
+      url.searchParams.set('page', '1');
+      return url.toString();
+    }
+
+    function getRiskBadge(risk) {
+      if (!risk) {
+        return '<span class="risk-badge risk-unknown">unknown</span>';
+      }
+      const score = risk.score;
+      if (score === undefined || score === null) {
+        return '<span class="risk-badge risk-unknown">unknown</span>';
+      }
+      if (score <= 2) {
+        return `<span class="risk-badge risk-safe">✓ Safe</span>`;
+      } else if (score <= 4) {
+        return `<span class="risk-badge risk-low">⚠ Low</span>`;
+      } else {
+        return `<span class="risk-badge risk-medium">🔶 Risk</span>`;
+      }
+    }
+
+    function formatNum(n) {
+      if (!n && n !== 0) return '0';
+      if (n >= 1000) return (n/1000).toFixed(1) + 'k';
+      return String(n);
+    }
+
+    function renderScripts(data) {
+      const scripts = data?.scripts || [];
+      const total = data?.meta?.pagination?.scripts?.total || 0;
+
+      if (total > 0) {
+        resultCount.textContent = `(${total} results)`;
+      } else {
+        resultCount.textContent = '';
+      }
+
+      if (scripts.length === 0) {
+        scriptGrid.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-box-open"></i>
+            <h3>No scripts found</h3>
+            <p style="color:#94a3b8; margin-top:0.3rem;">Try a different query.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      scripts.forEach(script => {
+        const title = script.title || 'Untitled';
+        const gameTitle = script.game?.title || 'Roblox';
+        const placeId = script.game?.placeId || '';
+        const gameUrl = script.game?.robloxUrl || `https://www.roblox.com/games/${placeId}`;
+        const desc = script.description || 'No description provided.';
+        const views = formatNum(script.views);
+        const likes = formatNum(script.likes);
+        const rawUrl = script.rawScript || '#';
+        const riskBadge = getRiskBadge(script.risk);
+        const creator = script.creator?.username || 'unknown';
+
+        html += `
+          <div class="script-card">
+            <div class="card-title">
+              <i class="fas fa-file-code"></i>
+              ${title}
+            </div>
+            <div class="card-game">
+              <i class="fas fa-gamepad"></i>
+              <a href="${gameUrl}" target="_blank">${gameTitle}</a>
+              ${placeId ? `<span style="color:#94a3b8;font-size:0.7rem;">#${placeId}</span>` : ''}
+            </div>
+            <div class="card-desc">${desc}</div>
+            <div class="card-meta">
+              <div class="stats">
+                <span><i class="fas fa-eye"></i> ${views}</span>
+                <span><i class="fas fa-thumbs-up"></i> ${likes}</span>
+                <span><i class="fas fa-user"></i> ${creator}</span>
+              </div>
+              ${riskBadge}
+            </div>
+            <div style="margin-top:0.75rem; display:flex; gap:6px; font-size:0.75rem;">
+              <a href="${rawUrl}" target="_blank" style="color:#4f46e5; text-decoration:none; background:#f1f5f9; padding:0.2rem 0.8rem; border-radius:40px;">
+                <i class="fas fa-scroll"></i> raw script
+              </a>
+            </div>
+          </div>
+        `;
+      });
+
+      scriptGrid.innerHTML = html;
+    }
+
+    function showLoading() {
+      resultCount.textContent = '…';
+      let loadingHtml = '';
+      for (let i = 0; i < 6; i++) {
+        loadingHtml += `
+          <div class="loading-card">
+            <div class="line shimmer" style="width:70%;"></div>
+            <div class="line shimmer" style="width:40%;"></div>
+            <div class="line shimmer" style="width:90%; margin-top:12px;"></div>
+            <div class="line shimmer" style="width:50%; margin-top:12px;"></div>
+          </div>
+        `;
+      }
+      scriptGrid.innerHTML = loadingHtml;
+    }
+
+    async function performSearch(query) {
+      if (!query || query.trim() === '') {
+        scriptGrid.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-search" style="font-size:2rem;"></i>
+            <h3>Enter a search term</h3>
+            <p style="color:#94a3b8;">e.g. "autofarm", "blox fruits", "inf yield"</p>
+          </div>
+        `;
+        resultCount.textContent = '';
+        return;
+      }
+
+      showLoading();
+
+      try {
+        const url = buildSearchUrl(query);
+        const headers = {
+          'Authorization': `Bearer ${API_KEY}`,
+          'Accept': 'application/json',
         };
 
-        let currentToastCode = '';
-
-        function fetchScript(scriptKey) {
-            const data = scriptData[scriptKey];
-            if (!data) {
-                showToast('❌ Script not found');
-                return;
-            }
-
-            const loading = document.getElementById('loading');
-            const loadingText = document.getElementById('loading-script');
-            loadingText.textContent = data.name;
-            loading.classList.add('active');
-
-            setTimeout(() => {
-                loading.classList.remove('active');
-                
-                const timestamp = Date.now();
-                const sessionId = sessionStorage.getItem('spectravax_session') || btoa(Math.random().toString(36));
-                sessionStorage.setItem('spectravax_session', sessionId);
-                
-                // 🔐 This is the protected URL - if accessed directly, redirects to /nicetry
-                const protectedUrl = `https://raw.githubusercontent.com/coolMANdud-3/Spectravax-Hub/refs/heads/main/${scriptKey}.lua?token=${btoa(sessionId + ':' + timestamp)}&session=${sessionId}`;
-                
-                currentToastCode = `loadstring(game:HttpGet("${protectedUrl}"))()`;
-                
-                document.getElementById('toast-title').textContent = `🔐 ${data.name} · encrypted payload`;
-                document.getElementById('toast-code').textContent = currentToastCode;
-                document.getElementById('toast-warning').textContent = '🔐 Session-locked · Token expires in 5 minutes';
-                document.getElementById('toast').classList.add('show');
-
-                clearTimeout(window.toastTimer);
-                window.toastTimer = setTimeout(() => {
-                    document.getElementById('toast').classList.remove('show');
-                }, 10000);
-            }, 1500);
+        const response = await fetch(url, { headers });
+        if (!response.ok) {
+          let errMsg = `API error ${response.status}`;
+          try {
+            const errJson = await response.json();
+            if (errJson.error?.message) errMsg = errJson.error.message;
+          } catch (_) {}
+          throw new Error(errMsg);
         }
 
-        function showToast(message) {
-            document.getElementById('toast-title').textContent = message;
-            document.getElementById('toast-code').textContent = '✔ ' + message;
-            document.getElementById('toast-warning').textContent = '🔐 Protected by Spectravax Hub';
-            document.getElementById('toast').classList.add('show');
-            clearTimeout(window.toastTimer);
-            window.toastTimer = setTimeout(() => {
-                document.getElementById('toast').classList.remove('show');
-            }, 4000);
+        const json = await response.json();
+        if (json.success === false) {
+          throw new Error(json.error?.message || 'Unknown API error');
         }
 
-        function copyCode() {
-            const code = document.getElementById('toast-code').textContent;
-            if (code.startsWith('loadstring')) {
-                navigator.clipboard.writeText(code).then(() => {
-                    showToast('📋 Encrypted script copied!');
-                }).catch(() => {
-                    const textarea = document.createElement('textarea');
-                    textarea.value = code;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(textarea);
-                    showToast('📋 Script copied!');
-                });
-            }
-        }
+        renderScripts(json.data || { scripts: [], meta: {} });
+      } catch (err) {
+        console.error('Search error:', err);
+        scriptGrid.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-exclamation-triangle" style="color:#ef4444;"></i>
+            <h3>Something went wrong</h3>
+            <p style="color:#94a3b8; max-width:400px; margin:0 auto;">
+              ${err.message || 'Could not fetch scripts. Check your API key or network.'}
+            </p>
+          </div>
+        `;
+        resultCount.textContent = '⚠️ error';
+      }
+    }
 
-        function switchTab(el, tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
-            if (tab !== 'code') {
-                showToast(`🔒 ${tab.charAt(0).toUpperCase() + tab.slice(1)} · Access restricted`);
-            }
-        }
+    // ---------- event binding ----------
+    function handleSearch() {
+      const query = searchInput.value.trim();
+      performSearch(query);
+    }
 
-        // 🛡️ PROTECTION: Redirect thieves to the "nice try" page
-        function validateRequest() {
-            // Check if trying to access raw content directly
-            if (window.location.search.includes('token=') && 
-                !document.referrer.includes('coolMANdud-3.github.io') &&
-                !document.referrer.includes('spectravax')) {
-                window.location.href = 'https://coolMANdud-3.github.io/nicetry';
-                return false;
-            }
-            return true;
-        }
+    searchBtn.addEventListener('click', handleSearch);
 
-        // Run validation on load
-        if (!validateRequest()) {
-            // The redirect will happen in validateRequest
-        }
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSearch();
+      }
+    });
 
-        document.addEventListener('contextmenu', function(e) {
-            if (e.target.closest('.toast')) {
-                e.preventDefault();
-                showToast('🛡️ Protected content · Copy via click only');
-            }
-        });
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      performSearch('');
+    });
 
-        document.addEventListener('click', function(e) {
-            const toast = document.getElementById('toast');
-            if (toast.classList.contains('show') && !toast.contains(e.target)) {
-                toast.classList.remove('show');
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && document.getElementById('toast').classList.contains('show')) {
-                copyCode();
-            }
-        });
-
-        console.log('🔐 Spectravax Hub · Protected Repository');
-        console.log('🛡️ All scripts are encrypted and session-locked');
-        console.log('🚫 Unauthorized access attempts will be redirected to coolMANdud-3.github.io/nicetry');
-    </script>
-
+    // ---------- initial load ----------
+    setTimeout(() => {
+      if (searchInput.value.trim()) {
+        performSearch(searchInput.value.trim());
+      } else {
+        performSearch('autofarm');
+      }
+    }, 100);
+  })();
+</script>
 </body>
 </html>
